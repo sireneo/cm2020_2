@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:body>
+        <h:form>
+            <p:panel id="panel" header="Formulario de validacion">
+                <p:messages id="msgs" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:outputLabel for="nombre" value="Nombre:" style="color: aqua" />
+                    <p:inputText id="nombre" value="#{beanValidar.nombre}" required="true" label="Nombre"/>
+                    <p:message for="nombre" display="icon" />
+
+                    <p:outputLabel for="apellido" value="Apellido:" style="color: aqua"/>
+                    <p:inputText id="apellido" value="#{beanValidar.apellido}" label="Apellido" required="true"/>
+                     <p:message for="apellido" display="icon" />
+                    
+                     <p:outputLabel for="edad" value="Edad:" style="color: aqua"/>
+                    <p:inputText id="edad" value="#{beanValidar.edad}" label="Edad" required="true"/>
+                     <p:message for="edad" display="icon" />
+
+                </h:panelGrid>
+                <p:commandButton value="Enviar" update="panel" action="#{beanValidar.guardar()}" icon="pi pi-save"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
+
+

@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
+    </h:head>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:body>
+        <h:form id="form">
+            <p:panel id="panel" header="Formulario basico" footer="Derechos de autor by SIJC 2020">
+                <p:growl id="growl" showDetail="false" sticky="false" />  
+                <p:panelGrid columns="2"  >
+                    <h:outputLabel for="nombre" value="Nombre: " />  
+                    <p:inputText id="nombre" value="#{manager.nombre}" required="true" label="Nombre"/>
+
+                    <h:outputLabel for="apellido" value="Apellido: " />  
+                    <p:inputText id="apellido" value="#{manager.apellido}" required="true" label="Apellido"/>
+
+                    <h:outputLabel for="edad" value="Edad: " />  
+                    <p:inputText id="edad" value="#{manager.edad}" required="true" label="Edad"/>
+
+                    <p:commandButton  action="#{manager.guardar()}" update="midato,panel" value="Guardar" icon="pi pi-save" />  		
+                    <p:commandButton  action="#{manager.eliminar()}" update="midato,panel" value="Eliminar" icon="pi pi-times" />  
+
+                </p:panelGrid>
+
+                <p:dataTable value="#{manager.cacheList}" var="item" id="midato" selectionMode="single"
+                             selection="#{manager.selectedProp}" rowKey="#{item.nombre}"
+                             >
+                    <p:column>
+                        <f:facet name="header">Nombre</f:facet>
+                        <h:outputText value="#{item.nombre}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Apellido</f:facet>
+                        <h:outputText value="#{item.apellido}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Edad</f:facet>
+                        <h:outputText value="#{item.edad}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

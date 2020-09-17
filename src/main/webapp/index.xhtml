@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Datos del usuario">
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputLabel for="text" value="Nombre" />
+                    <p:inputText id="text" value="#{validacionBean.nombre}" required="true">
+                        <f:validateLength minimum="2" maximum="5" />
+                        <p:clientValidator />
+                    </p:inputText>
+                    <p:message for="text" display="icon" />
+                    <h:outputText value="#{validacionBean.nombre}" />
+
+                    <h:outputLabel for="integer" value="Edad" />
+                    <p:inputText id="integer" value="#{validacionBean.edad}">
+                        <p:clientValidator event="keyup"/>
+                    </p:inputText>
+                    <p:message for="integer" display="icon" />
+                    <h:outputText value="#{validacionBean.edad}" />
+                </h:panelGrid>
+
+                <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" />
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

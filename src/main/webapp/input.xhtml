@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:panel id="panel" header="Datos del usuario" footer="Derechos reservados">
+                <h:panelGrid columns="2"  >
+                    <p:outputLabel for="nombre" value="Nombre:" />
+                    <p:inputText id="nombre" value="#{input.nombre}"/>
+
+                    <p:outputLabel for="fecha" value="Fecha: " />
+                    <p:inputMask id="fecha" value="#{input.fecha}" mask="99/99/9999" />
+
+                    <p:outputLabel for="fono" value="Telefono:" />
+                    <p:inputMask id="fono" value="#{input.fono}" mask="(999) 999-9999" />
+
+                    <p:commandButton value="Cancelar" type="reset" />
+                    <p:commandButton value="enviar" update="display" oncomplete="PF('dlg').show()"/>
+                </h:panelGrid>
+
+                <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Datos obtenidos" showEffect="fade" focus="panel"> 
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="Nombre: " />
+                        <h:outputText id="nombreval" value="#{input.nombre}" />
+
+                        <h:outputText value="Fecha: " />
+                        <h:outputText id="fechaval" value="#{input.fecha}" />
+
+                        <h:outputText value="Telefono: " />
+                        <h:outputText id="fonoval" value="#{input.fono}" />
+
+                    </p:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
+
+
